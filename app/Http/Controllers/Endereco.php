@@ -44,6 +44,11 @@ class Endereco extends Controller
 
 	public function save(SalvarRequest $request)
 	{
+		$endereco = EnderecoModel::where('cep', $request->input('cep'))->first();
+
+		if ($endereco)
+			return redirect('/')->withError('Endereco ja registrado.');
+		
 		EnderecoModel::create(
 			[
 				'cep' => $request->input('cep'),
@@ -55,6 +60,6 @@ class Endereco extends Controller
 			]
 		);
 
-		return redirect('/');
+		return redirect('/')->withSuccess('Cadastrado com sucesso!');
 	}
 }
