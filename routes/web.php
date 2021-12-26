@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [Endereco::class, 'index'])->name('home');
 
 Route::get('/search', [Endereco::class, 'search'])->name('buscar');
+
+Route::get('/adicionar', [Endereco::class, 'adicionar'])->name('adicionar');
+
+Route::post('/save', [Endereco::class, 'save'])->name('salvar');
